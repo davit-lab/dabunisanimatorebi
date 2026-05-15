@@ -1,0 +1,299 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Noto+Sans+Georgian:wght@400;500;600;700;800;900&family=Caveat:wght@500;700&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-light: var(--primary-light);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-2: var(--accent-2);
+  --color-accent-3: var(--accent-3);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-cream: var(--cream);
+  --color-ink: var(--ink);
+  --color-sky: var(--sky);
+  --color-grass: var(--grass);
+  --color-sun: var(--sun);
+  --color-coral: var(--coral);
+
+  --font-display: 'Fredoka', 'Noto Sans Georgian', system-ui, sans-serif;
+  --font-heading: 'Fredoka', 'Noto Sans Georgian', system-ui, sans-serif;
+  --font-body: 'Noto Sans Georgian', 'Fredoka', system-ui, sans-serif;
+  --font-hand: 'Caveat', cursive;
+}
+
+:root {
+  --radius: 1.25rem;
+
+  /* Scrapbook palette: cream paper + ink navy + 4 sticker colors */
+  --background: #FDF9F0;
+  --foreground: #2D334A;
+  --ink: #2D334A;
+
+  --card: #FFFFFF;
+  --card-foreground: #2D334A;
+  --popover: #FFFFFF;
+  --popover-foreground: #2D334A;
+
+  --primary: #FF6B6B;            /* coral */
+  --primary-foreground: #FFFFFF;
+  --primary-light: #FFB8B8;
+
+  --secondary: #FFD93D;            /* sun yellow */
+  --secondary-foreground: #2D334A;
+
+  --accent: #4D96FF;               /* sky blue */
+  --accent-foreground: #FFFFFF;
+  --accent-2: #6BCB77;             /* grass green */
+  --accent-3: #FFE0E0;
+
+  --muted: #F2EEE3;
+  --muted-foreground: #6B7280;
+
+  --destructive: #E63946;
+  --destructive-foreground: #FFFFFF;
+
+  --success: #6BCB77;
+  --success-foreground: #FFFFFF;
+
+  --border: #2D334A;
+  --input: #FFFFFF;
+  --ring: #FF6B6B;
+
+  --cream: #FDF9F0;
+  --sky: #4D96FF;
+  --grass: #6BCB77;
+  --sun: #FFD93D;
+  --coral: #FF6B6B;
+}
+
+.dark {
+  --background: #1F2233;
+  --foreground: #FDF9F0;
+  --card: #2A2F47;
+  --card-foreground: #FDF9F0;
+  --popover: #2A2F47;
+  --popover-foreground: #FDF9F0;
+  --ink: #FDF9F0;
+  --primary: #FF8585;
+  --primary-foreground: #1F2233;
+  --secondary: #FFE066;
+  --secondary-foreground: #1F2233;
+  --accent: #7DB3FF;
+  --accent-foreground: #1F2233;
+  --muted: #2A2F47;
+  --muted-foreground: #B5B8C5;
+  --border: #FDF9F0;
+  --input: #2A2F47;
+  --ring: #FF8585;
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html, body {
+    background: var(--background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    font-weight: 500;
+  }
+  .font-display { font-family: var(--font-display); font-weight: 800; }
+  .font-heading { font-family: var(--font-heading); font-weight: 700; }
+  .font-body { font-family: var(--font-body); }
+  .font-hand { font-family: var(--font-hand); }
+
+  ::selection { background: var(--secondary); color: var(--ink); }
+}
+
+@layer utilities {
+  /* === Scrapbook core utilities === */
+  .border-ink { border-color: var(--ink); }
+  .text-ink { color: var(--ink); }
+  .bg-ink { background-color: var(--ink); }
+  .bg-cream { background-color: var(--cream); }
+  .bg-sun { background-color: var(--sun); }
+  .bg-sky { background-color: var(--sky); }
+  .bg-grass { background-color: var(--grass); }
+  .bg-coral { background-color: var(--coral); }
+  .text-sun { color: var(--sun); }
+  .text-sky { color: var(--sky); }
+  .text-grass { color: var(--grass); }
+  .text-coral { color: var(--coral); }
+
+  /* Hard offset shadows — the signature scrapbook look */
+  .shadow-sticker     { box-shadow: 4px 4px 0 0 var(--ink); }
+  .shadow-sticker-md  { box-shadow: 6px 6px 0 0 var(--ink); }
+  .shadow-sticker-lg  { box-shadow: 8px 8px 0 0 var(--ink); }
+  .shadow-sticker-xl  { box-shadow: 12px 12px 0 0 var(--ink); }
+
+  /* "Press" interaction for buttons/cards */
+  .press {
+    transition: transform 180ms cubic-bezier(.2,.7,.3,1.2), box-shadow 180ms ease;
+  }
+  .press:hover { transform: translate(-2px,-2px); box-shadow: 10px 10px 0 0 var(--ink); }
+  .press:active { transform: translate(4px,4px); box-shadow: 0 0 0 0 var(--ink); }
+
+  /* Tilts */
+  .tilt-l { transform: rotate(-2deg); }
+  .tilt-r { transform: rotate(2deg); }
+  .tilt-l-soft { transform: rotate(-1deg); }
+  .tilt-r-soft { transform: rotate(1deg); }
+
+  /* Washi tape strip */
+  .washi {
+    position: absolute;
+    height: 28px;
+    width: 110px;
+    background: var(--sun);
+    border-top: 2px dashed rgba(0,0,0,.15);
+    border-bottom: 2px dashed rgba(0,0,0,.15);
+    box-shadow: 0 2px 6px rgba(0,0,0,.15);
+    pointer-events: none;
+  }
+  .washi-coral { background: var(--coral); }
+  .washi-sky   { background: var(--sky); color: white; }
+  .washi-grass { background: var(--grass); color: white; }
+
+  /* Dotted/dashed paper accents */
+  .ring-ink-3 { box-shadow: inset 0 0 0 3px var(--ink); }
+  .border-dashed-ink { border: 3px dashed var(--ink); }
+
+  /* Subtle paper grain */
+  .paper {
+    background-color: var(--cream);
+    background-image:
+      radial-gradient(ellipse at 20% 30%, rgba(0,0,0,.025) 0, transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(0,0,0,.025) 0, transparent 50%);
+  }
+  .paper-grain::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: .06;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+  }
+
+  /* Pill marquee strip */
+  .marquee {
+    display: flex;
+    gap: 2.5rem;
+    animation: marquee 28s linear infinite;
+    will-change: transform;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Doodle bounce */
+  .wiggle { animation: wiggle 3.2s ease-in-out infinite; transform-origin: 50% 80%; }
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-3deg); }
+    50%      { transform: rotate(3deg); }
+  }
+
+  .float { animation: float 6s ease-in-out infinite; }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-10px); }
+  }
+
+  .animate-fade-in { animation: fadeIn .5s ease-out both; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Hand-drawn underline using SVG */
+  .underline-hand {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 7 Q 50 1, 100 6 T 198 5' stroke='%23FFD93D' stroke-width='6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 0 92%;
+    background-size: 100% 0.45em;
+    padding-bottom: 0.2em;
+  }
+
+  .text-balance { text-wrap: balance; }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--ink); border: 2px solid var(--cream); border-radius: 999px; }
+
+/* Focus */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--secondary);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* === Compatibility shims for legacy utility classes === */
+@layer utilities {
+  .gradient-text { color: var(--coral); font-weight: 800; }
+  .gradient-hero { background: var(--coral); }
+  .gradient-warm { background: var(--sun); }
+  .gradient-cool { background: var(--sky); }
+  .gradient-soft { background: var(--cream); }
+  .ambient-warm  { background: var(--cream); }
+  .glass {
+    background: rgba(255,255,255,0.92);
+    border: 3px solid var(--ink);
+    border-radius: 1.25rem;
+    box-shadow: 4px 4px 0 0 var(--ink);
+  }
+  .hand-drawn { border-radius: 1.75rem; }
+  .sticker { transform: rotate(-2deg); box-shadow: 4px 4px 0 0 var(--ink); }
+  .hover-lift { transition: transform .25s ease, box-shadow .25s ease; }
+  .hover-lift:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 0 var(--ink); }
+  .paper-texture { position: relative; }
+  .card-texture { background: white; }
+  .shadow-glow, .shadow-soft, .shadow-pop, .shadow-card, .shadow-float { box-shadow: 4px 4px 0 0 var(--ink); }
+  .text-shadow, .text-shadow-lg { text-shadow: 2px 2px 0 var(--ink); }
+  .glow, .glow-cool { filter: none; }
+  .pulse-glow { animation: none; }
+  .gradient-text-animate { color: var(--coral); -webkit-text-fill-color: currentColor; }
+  .blob, .blob-2, .blob-3 { display: none; }
+  .dots-pattern {
+    background-image: radial-gradient(circle, var(--ink) 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+    opacity: .15;
+  }
+  .rubik-scribble-regular { font-family: 'Fredoka', system-ui; font-weight: 800; }
+  .btn-shine { position: relative; }
+  .magnetic { transition: transform .3s ease; }
+  .inner-glow { box-shadow: 4px 4px 0 0 var(--ink); }
+  .curved-top { position: relative; }
+}
